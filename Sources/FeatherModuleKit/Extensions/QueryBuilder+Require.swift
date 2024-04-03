@@ -17,7 +17,7 @@ extension QueryBuilderPrimaryKeyGet {
         ) {
             return ret
         }
-        
+
         throw ModuleError.objectNotFound(
             type: String(
                 reflecting: Row.self
