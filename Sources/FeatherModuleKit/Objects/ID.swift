@@ -23,7 +23,7 @@ public struct ID<Value: Identifiable>: RawRepresentable, Object {
         try container.encode(rawValue)
     }
 
-    public func cast<I: Identifiable>(to: I.Type) -> ID<I>
+    public func transform<I: Identifiable>(to: I.Type) -> ID<I>
     where I.RawIdentifier == Value.RawIdentifier {
         .init(rawValue: self.rawValue)
     }
