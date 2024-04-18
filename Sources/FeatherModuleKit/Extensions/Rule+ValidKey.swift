@@ -7,7 +7,7 @@ extension Rule where T: Equatable & Encodable {
         _: Q.Type,
         message: String? = nil,
         on db: Database
-    ) -> Self where Q.Row == KeyedDatabaseModel, T == Q.Row.KeyType {
+    ) -> Self where Q.Row: KeyedDatabaseModel, T == Q.Row.KeyType {
         .init(
             message: message ?? "Primary key is not valid."
         ) { value in
