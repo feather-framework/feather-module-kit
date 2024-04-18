@@ -5,7 +5,7 @@
 //  Created by Tibor Bodecs on 02/03/2024.
 //
 
-import DatabaseQueryKit
+import FeatherDatabase
 
 extension ID where Value.RawIdentifier == String {
 
@@ -14,7 +14,7 @@ extension ID where Value.RawIdentifier == String {
     }
 
     public func toKey() -> Key<Value> {
-        .init(rawValue)
+        .init(rawValue: rawValue)
     }
 }
 

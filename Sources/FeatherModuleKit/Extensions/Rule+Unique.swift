@@ -5,26 +5,28 @@
 //  Created by Tibor Bodecs on 13/03/2024.
 //
 
-import DatabaseQueryKit
+import FeatherDatabase
 import FeatherValidation
 
 extension Rule where T: Equatable & Encodable {
 
-    public static func unique<QB: QueryBuilderCount>(
-        queryBuilder: QB,
-        fieldKey: QB.Row.FieldKeys,
+    public static func unique<Q: DatabaseQueryCount>(
+        _: Q.Type,
+        column: Q.Row.ColumnNames,
         message: String? = nil,
-        originalValue: T? = nil
+        originalValue: T? = nil,
+        on db: Database
     ) -> Self {
         .init(
             message: message ?? "The value should be unique."
         ) { value in
-            let count = try await queryBuilder.count(
+            let count = try await Q.count(
                 filter: .init(
-                    field: fieldKey,
+                    column: column,
                     operator: .equal,
                     value: value
-                )
+                ),
+                on: db
             )
             if let originalValue {
                 if originalValue == value {
@@ -49,21 +51,23 @@ extension Rule where T: Equatable & Encodable {
 
 extension Rule where T: RawRepresentable & Object {
 
-    public static func unique<QB: QueryBuilderCount>(
-        queryBuilder: QB,
-        fieldKey: QB.Row.FieldKeys,
+    public static func unique<Q: DatabaseQueryCount>(
+        _: Q.Type,
+        column: Q.Row.ColumnNames,
         message: String? = nil,
-        originalValue: T? = nil
+        originalValue: T? = nil,
+        on db: Database
     ) -> Self {
         .init(
             message: message ?? "The value should be unique."
         ) { value in
-            let count = try await queryBuilder.count(
+            let count = try await Q.count(
                 filter: .init(
-                    field: fieldKey,
+                    column: column,
                     operator: .equal,
                     value: value
-                )
+                ),
+                on: db
             )
             if let originalValue {
                 if originalValue == value {
