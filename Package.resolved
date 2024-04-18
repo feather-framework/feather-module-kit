@@ -12,37 +12,55 @@
     {
       "identity" : "feather-component",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/feather-framework/feather-component",
+      "location" : "https://github.com/feather-framework/feather-component.git",
       "state" : {
-        "revision" : "d8373cf9ab5db3e7b21fbcb8e6d1d5718b3bb73b",
+        "revision" : "c209d87352d27afc124422db11c9ca2bb0f7a376",
+        "version" : "0.5.0"
+      }
+    },
+    {
+      "identity" : "feather-database",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/feather-framework/feather-database",
+      "state" : {
+        "revision" : "196dcdd11cc90ee3916566f18f7f90f8c8236f19",
+        "version" : "0.4.1"
+      }
+    },
+    {
+      "identity" : "feather-mail",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/feather-framework/feather-mail",
+      "state" : {
+        "revision" : "cd8151198fa22920e949f890a61602f0b7f532fe",
+        "version" : "0.5.0"
+      }
+    },
+    {
+      "identity" : "feather-push",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/feather-framework/feather-push",
+      "state" : {
+        "revision" : "7f53ae4144b18a9848ef3f5799420f59cfe30c95",
         "version" : "0.4.0"
       }
     },
     {
-      "identity" : "feather-database-kit",
+      "identity" : "feather-scripts",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/feather-framework/feather-database-kit",
+      "location" : "https://github.com/feather-framework/feather-scripts",
       "state" : {
-        "revision" : "abd84c82218eee998aba700c8be8184fb123a551",
-        "version" : "0.7.1"
+        "revision" : "1cd699110addb0fd8d27ef662e5fcb326ff29852",
+        "version" : "0.1.0"
       }
     },
     {
-      "identity" : "feather-migration-kit",
+      "identity" : "feather-storage",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/feather-framework/feather-migration-kit",
+      "location" : "https://github.com/feather-framework/feather-storage",
       "state" : {
-        "revision" : "b782c0bca6e4fe62acc00eae3412d2bf742357b6",
-        "version" : "0.3.0"
-      }
-    },
-    {
-      "identity" : "feather-relational-database",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/feather-framework/feather-relational-database",
-      "state" : {
-        "revision" : "fd4fc17854f3a17fe33b1a80c02615bd9da34a7a",
-        "version" : "0.2.0"
+        "revision" : "c30a691516cf8b2956116f00732b99c639083af8",
+        "version" : "0.5.0"
       }
     },
     {
@@ -50,8 +68,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/feather-framework/feather-validation",
       "state" : {
-        "revision" : "6e2fdf7c3c45b356fd97ccaeb848b5ef3586f97f",
-        "version" : "0.1.0"
+        "revision" : "0534053c786821da100ee5c82e2fcd48907e1529",
+        "version" : "0.1.1"
       }
     },
     {
@@ -59,17 +77,17 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/vapor/sql-kit",
       "state" : {
-        "revision" : "b2f128cb62a3abfbb1e3b2893ff3ee69e70f4f0f",
-        "version" : "3.28.0"
+        "revision" : "b97168805638b9f92d4f04b17cc23f0d1f928c79",
+        "version" : "3.29.2"
       }
     },
     {
-      "identity" : "swift-async-algorithms",
+      "identity" : "swift-algorithms",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-async-algorithms.git",
+      "location" : "https://github.com/apple/swift-algorithms",
       "state" : {
-        "revision" : "da4e36f86544cdf733a40d59b3a2267e3a7bbf36",
-        "version" : "1.0.0"
+        "revision" : "f6919dfc309e7f1b56224378b11e28bab5bccc42",
+        "version" : "1.2.0"
       }
     },
     {
@@ -118,12 +136,12 @@
       }
     },
     {
-      "identity" : "swift-service-lifecycle",
+      "identity" : "swift-numerics",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/swift-server/swift-service-lifecycle",
+      "location" : "https://github.com/apple/swift-numerics.git",
       "state" : {
-        "revision" : "d7fe0e731499a8dcce53bf4cbbc812c8e565d3a7",
-        "version" : "2.4.1"
+        "revision" : "0a5bc04095a675662cf24757cc0640aa2204253b",
+        "version" : "1.0.2"
       }
     },
     {

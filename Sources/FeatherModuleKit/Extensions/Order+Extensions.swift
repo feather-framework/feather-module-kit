@@ -5,11 +5,11 @@
 //  Created by Tibor Bodecs on 11/03/2024.
 //
 
-import DatabaseQueryKit
+import FeatherDatabase
 
 extension Order {
 
-    public var queryDirection: QueryDirection {
+    public var queryDirection: DatabaseDirection {
         switch self {
         case .asc: .asc
         case .desc: .desc

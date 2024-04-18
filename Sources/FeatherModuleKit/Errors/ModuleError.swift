@@ -6,5 +6,5 @@
 //
 
 public enum ModuleError: Error {
-    case objectNotFound(type: String, id: String)
+    case objectNotFound(model: String, keyName: String)
 }

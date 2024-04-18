@@ -5,24 +5,20 @@
 //  Created by Tibor Bodecs on 02/03/2024.
 //
 
-import DatabaseQueryKit
+import FeatherDatabase
 
-extension QueryBuilderPrimaryKeyGet {
+extension DatabaseQueryGet where Row: KeyedDatabaseModel {
 
-    public func require(
-        _ value: Encodable
+    public static func require(
+        _ value: Row.KeyType,
+        on db: Database
     ) async throws -> Row {
-        if let ret = try await get(
-            value
-        ) {
+        if let ret = try await get(value, on: db) {
             return ret
         }
-
         throw ModuleError.objectNotFound(
-            type: String(
-                reflecting: Row.self
-            ),
-            id: Self.primaryKey.rawValue
+            model: String(reflecting: Row.self),
+            keyName: Row.keyName.rawValue
         )
     }
 }
