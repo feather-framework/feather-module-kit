@@ -18,8 +18,9 @@ public protocol ControllerInterface {
 public protocol KeyedControllerInterface: ControllerInterface
 where
     Model: KeyedDatabaseModel,
-    Model.KeyType == Key<KeyType>,
-    KeyType.RawIdentifier == String
+    Model.KeyType.T: Identifiable,
+    Model.KeyType.T.RawIdentifier == String,
+    Key<KeyType> == Model.KeyType
 {
-    associatedtype KeyType: Identifiable
+    associatedtype KeyType = Model.KeyType.T
 }
