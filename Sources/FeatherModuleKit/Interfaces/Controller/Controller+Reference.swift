@@ -21,13 +21,13 @@ where
     associatedtype Reference: ReferenceInterface
 
     func reference(
-        keys: [ID<KeyType>]
+        ids: [ID<KeyType>]
     ) async throws -> [Reference]
 }
 
 extension ControllerReference {
     public func reference(
-        keys: [ID<KeyType>]
+        ids: [ID<KeyType>]
     ) async throws -> [Reference] {
         let db = try await components.database().connection()
 
@@ -37,7 +37,7 @@ extension ControllerReference {
                 filter: .init(
                     column: Model.keyName,
                     operator: .in,
-                    value: keys
+                    value: ids
                 ),
                 on: db
             )

@@ -31,27 +31,27 @@ where
     associatedtype Detail: DetailInterface
 
     func patch(
-        key: ID<KeyType>,
+        _ id: ID<KeyType>,
         _ input: Patch
     ) async throws -> Detail
 }
 
 extension ControllerPatch {
     public func patch(
-        key: ID<KeyType>,
+        _ id: ID<KeyType>,
         _ input: Patch
     ) async throws -> Detail {
         let db = try await components.database().connection()
 
         let oldModel = try await Query.require(
-            key.toKey(),
+            id.toKey(),
             on: db
         )
 
-        try await input.validate(key, on: db)
+        try await input.validate(id, on: db)
 
         let newModel = Model.init(patch: input, oldModel: oldModel)
-        try await Query.update(key.toKey(), newModel, on: db)
+        try await Query.update(id.toKey(), newModel, on: db)
         return try .init(model: newModel)
     }
 }

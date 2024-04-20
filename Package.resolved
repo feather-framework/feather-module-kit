@@ -19,6 +19,15 @@
       }
     },
     {
+      "identity" : "feather-database",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/feather-framework/feather-database",
+      "state" : {
+        "revision" : "0c2bf4e9c9861cb27e19d437c90200509e72359d",
+        "version" : "0.4.4"
+      }
+    },
+    {
       "identity" : "feather-mail",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/feather-framework/feather-mail",

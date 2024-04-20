@@ -31,24 +31,24 @@ where
     associatedtype Detail: DetailInterface
 
     func update(
-        key: ID<KeyType>,
+        _ id: ID<KeyType>,
         _ input: Update
     ) async throws -> Detail
 }
 
 extension ControllerUpdate {
     public func update(
-        key: ID<KeyType>,
+        _ id: ID<KeyType>,
         _ input: Update
     ) async throws -> Detail {
         let db = try await components.database().connection()
 
-        let oldModel = try await Query.require(key.toKey(), on: db)
+        let oldModel = try await Query.require(id.toKey(), on: db)
 
-        try await input.validate(key, on: db)
+        try await input.validate(id, on: db)
 
         let newModel = Model.init(update: input, oldModel: oldModel)
-        try await Query.update(key.toKey(), newModel, on: db)
+        try await Query.update(id.toKey(), newModel, on: db)
         return try .init(model: newModel)
     }
 }

@@ -21,16 +21,16 @@ where
     associatedtype Detail: DetailInterface
 
     func get(
-        key: ID<KeyType>
+        _ id: ID<KeyType>
     ) async throws -> Detail
 }
 
 extension ControllerGet {
     public func get(
-        key: ID<KeyType>
+        _ id: ID<KeyType>
     ) async throws -> Detail {
         let db = try await components.database().connection()
-        let model = try await Query.require(key.toKey(), on: db)
+        let model = try await Query.require(id.toKey(), on: db)
 
         return try .init(model: model)
     }
