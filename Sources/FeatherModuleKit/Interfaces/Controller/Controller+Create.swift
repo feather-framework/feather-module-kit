@@ -14,7 +14,7 @@ public protocol CreateInterface {
 
 public protocol ModelInterfaceCreate: DatabaseModel {
     associatedtype Create
-    init(create: Create)
+    init(create: Create) throws
 }
 
 public protocol ControllerCreate: ControllerInterface
@@ -40,7 +40,7 @@ extension ControllerCreate {
 
         try await input.validate(on: db)
 
-        let model = Model.init(create: input)
+        let model = try Model.init(create: input)
 
         try await Query.insert(model, on: db)
         return try .init(model: model)

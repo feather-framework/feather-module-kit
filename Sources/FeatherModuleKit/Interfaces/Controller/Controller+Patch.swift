@@ -15,7 +15,7 @@ public protocol PatchInterface {
 
 public protocol ModelInterfacePatch: DatabaseModel {
     associatedtype Patch: PatchInterface
-    init(patch: Patch, oldModel: Self)
+    init(patch: Patch, oldModel: Self) throws
 }
 
 public protocol ControllerPatch: KeyedControllerInterface
@@ -50,7 +50,7 @@ extension ControllerPatch {
 
         try await input.validate(id, on: db)
 
-        let newModel = Model.init(patch: input, oldModel: oldModel)
+        let newModel = try Model.init(patch: input, oldModel: oldModel)
         try await Query.update(id.toKey(), newModel, on: db)
         return try .init(model: newModel)
     }

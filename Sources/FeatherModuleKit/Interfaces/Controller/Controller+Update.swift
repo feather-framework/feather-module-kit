@@ -15,7 +15,7 @@ public protocol UpdateInterface {
 
 public protocol ModelInterfaceUpdate: DatabaseModel {
     associatedtype Update: UpdateInterface
-    init(update: Update, oldModel: Self)
+    init(update: Update, oldModel: Self) throws
 }
 
 public protocol ControllerUpdate: KeyedControllerInterface
@@ -47,7 +47,7 @@ extension ControllerUpdate {
 
         try await input.validate(id, on: db)
 
-        let newModel = Model.init(update: input, oldModel: oldModel)
+        let newModel = try Model.init(update: input, oldModel: oldModel)
         try await Query.update(id.toKey(), newModel, on: db)
         return try .init(model: newModel)
     }
