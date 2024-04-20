@@ -8,13 +8,8 @@
 import FeatherComponent
 import FeatherDatabase
 
-public protocol ListQueryKeysInterface {
-    associatedtype T: DatabaseColumnName
-    func toColumn() -> T
-}
-
 public protocol ListQuerySortInterface {
-    associatedtype Key: ListQueryKeysInterface
+    associatedtype Key: SortKeyInterface
     var by: Key { get }
     var order: Order { get }
 }
@@ -33,11 +28,17 @@ public protocol ListInterface {
     init(items: [Model], count: UInt) throws
 }
 
+public protocol ModelColumnNamesInterface {
+    associatedtype ListQuerySortKeys: SortKeyInterface
+    init(listQuerySortKeys: ListQuerySortKeys) throws
+}
+
 public protocol ControllerList: ControllerInterface
 where
     Query: DatabaseQueryList,
     List.Model == Model,
-    List.Query.Sort.Key.T == Model.ColumnNames
+    Model.ColumnNames: ModelColumnNamesInterface,
+    Model.ColumnNames.ListQuerySortKeys == List.Query.Sort.Key
 {
     associatedtype List: ListInterface
 
@@ -72,7 +73,7 @@ extension ControllerList {
                 ),
                 orders: [
                     .init(
-                        column: input.sort.by.toColumn(),
+                        column: .init(listQuerySortKeys: input.sort.by),
                         direction: input.sort.order.queryDirection
                     )
                 ],
