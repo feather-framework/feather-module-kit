@@ -45,7 +45,7 @@ where
         _ input: List.Query
     ) async throws -> List
 
-    static func getListFilterColumns() -> [Model.ColumnNames]
+    static var listFilterColumns: [Model.ColumnNames] { get }
 }
 
 extension ControllerList {
@@ -57,7 +57,7 @@ extension ControllerList {
         let filterGroup = input.search.flatMap { value in
             DatabaseGroupFilter<Model.ColumnNames>(
                 relation: .or,
-                columns: Self.getListFilterColumns()
+                columns: Self.listFilterColumns
                     .map {
                         .init(column: $0, operator: .like, value: "%\(value)%")
                     }
