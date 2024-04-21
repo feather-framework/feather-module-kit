@@ -13,7 +13,7 @@ public protocol CreateInterface {
 }
 
 public protocol ModelInterfaceCreate: DatabaseModel {
-    associatedtype Create
+    associatedtype Create: CreateInterface
     init(create: Create) throws
 }
 
