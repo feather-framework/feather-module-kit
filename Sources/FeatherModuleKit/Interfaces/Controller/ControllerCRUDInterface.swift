@@ -8,8 +8,7 @@
 import FeatherComponent
 import FeatherDatabase
 
-public protocol ControllerModelInterface
-{
+public protocol ControllerModelInterface {
     associatedtype Query: DatabaseQueryInterface
     associatedtype Patch: PatchInterface
     associatedtype Update: UpdateInterface
@@ -19,7 +18,7 @@ public protocol ControllerModelInterface
     associatedtype List: ListInterface
 }
 
-public protocol ControllerCRUDInterface :
+public protocol ControllerCRUDInterface:
     ControllerCreate,
     ControllerDelete,
     ControllerGet,
