@@ -12,7 +12,7 @@
     {
       "identity" : "feather-component",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/feather-framework/feather-component.git",
+      "location" : "https://github.com/feather-framework/feather-component",
       "state" : {
         "revision" : "c209d87352d27afc124422db11c9ca2bb0f7a376",
         "version" : "0.5.0"
@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/feather-framework/feather-database",
       "state" : {
-        "revision" : "196dcdd11cc90ee3916566f18f7f90f8c8236f19",
-        "version" : "0.4.1"
+        "revision" : "0c2bf4e9c9861cb27e19d437c90200509e72359d",
+        "version" : "0.4.4"
       }
     },
     {
