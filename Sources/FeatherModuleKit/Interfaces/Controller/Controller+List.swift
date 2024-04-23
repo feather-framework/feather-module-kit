@@ -46,12 +46,24 @@ where
         _ input: List.Query
     ) async throws -> List
 
+    func list(
+        _ input: List.Query,
+        filters: [DatabaseGroupFilter<Model.ColumnNames>]
+    ) async throws -> List
+
     static var listFilterColumns: [Model.ColumnNames] { get }
 }
 
 extension ControllerList {
     public func list(
         _ input: List.Query
+    ) async throws -> List {
+        try await list(input, filters: [])
+    }
+
+    public func list(
+        _ input: List.Query,
+        filters: [DatabaseGroupFilter<Model.ColumnNames>]
     ) async throws -> List {
         let db = try await components.database().connection()
 
@@ -63,6 +75,12 @@ extension ControllerList {
                         .init(column: $0, operator: .like, value: "%\(value)%")
                     }
             )
+        }
+
+        var filterGroups = filters
+
+        if let filterGroup {
+            filterGroups += [filterGroup]
         }
 
         let result = try await Query.list(
@@ -77,7 +95,10 @@ extension ControllerList {
                         direction: input.sort.order.queryDirection
                     )
                 ],
-                filter: filterGroup.map { .init(groups: [$0]) }
+                filter: .init(
+                    relation: .and,
+                    groups: filterGroups
+                )
             ),
             on: db
         )
