@@ -13,10 +13,20 @@ where Query: DatabaseQueryDelete {
     func bulkDelete(
         ids: [ID<KeyType>]
     ) async throws
+
+    func bulkDeleteDefault(
+        ids: [ID<KeyType>]
+    ) async throws
 }
 
 extension ControllerDelete {
     public func bulkDelete(
+        ids: [ID<KeyType>]
+    ) async throws {
+        try await bulkDeleteDefault(ids: ids)
+    }
+
+    public func bulkDeleteDefault(
         ids: [ID<KeyType>]
     ) async throws {
         let db = try await components.database().connection()

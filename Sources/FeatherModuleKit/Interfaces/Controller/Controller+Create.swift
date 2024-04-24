@@ -31,6 +31,10 @@ where
         _ input: Create
     ) async throws -> Detail
 
+    func createDefault(
+        _ input: Create
+    ) async throws -> Detail
+
     static func typeDefinition(create: Create.Type)
     static func typeDefinition(detail: Detail.Type)
 }
@@ -40,6 +44,12 @@ extension ControllerCreate {
     public static func typeDefinition(detail: Detail.Type) {}
 
     public func create(
+        _ input: Create
+    ) async throws -> Detail {
+        try await createDefault(input)
+    }
+
+    public func createDefault(
         _ input: Create
     ) async throws -> Detail {
         let db = try await components.database().connection()

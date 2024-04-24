@@ -35,6 +35,11 @@ where
         _ input: Update
     ) async throws -> Detail
 
+    func updateDefault(
+        _ id: ID<KeyType>,
+        _ input: Update
+    ) async throws -> Detail
+
     static func typeDefinition(update: Update.Type)
     static func typeDefinition(detail: Detail.Type)
 }
@@ -44,6 +49,13 @@ extension ControllerUpdate {
     public static func typeDefinition(detail: Detail.Type) {}
 
     public func update(
+        _ id: ID<KeyType>,
+        _ input: Update
+    ) async throws -> Detail {
+        try await updateDefault(id, input)
+    }
+
+    public func updateDefault(
         _ id: ID<KeyType>,
         _ input: Update
     ) async throws -> Detail {

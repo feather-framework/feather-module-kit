@@ -24,6 +24,10 @@ where
         ids: [ID<KeyType>]
     ) async throws -> [Reference]
 
+    func referenceDefault(
+        ids: [ID<KeyType>]
+    ) async throws -> [Reference]
+
     static func typeDefinition(reference: Reference.Type)
 }
 
@@ -31,6 +35,12 @@ extension ControllerReference {
     public static func typeDefinition(reference: Reference.Type) {}
 
     public func reference(
+        ids: [ID<KeyType>]
+    ) async throws -> [Reference] {
+        try await referenceDefault(ids: ids)
+    }
+
+    public func referenceDefault(
         ids: [ID<KeyType>]
     ) async throws -> [Reference] {
         let db = try await components.database().connection()

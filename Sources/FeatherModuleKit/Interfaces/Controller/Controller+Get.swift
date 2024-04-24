@@ -24,6 +24,10 @@ where
         _ id: ID<KeyType>
     ) async throws -> Detail
 
+    func getDefault(
+        _ id: ID<KeyType>
+    ) async throws -> Detail
+
     static func typeDefinition(detail: Detail.Type)
 }
 
@@ -31,6 +35,12 @@ extension ControllerGet {
     public static func typeDefinition(detail: Detail.Type) {}
 
     public func get(
+        _ id: ID<KeyType>
+    ) async throws -> Detail {
+        try await getDefault(id)
+    }
+
+    public func getDefault(
         _ id: ID<KeyType>
     ) async throws -> Detail {
         let db = try await components.database().connection()

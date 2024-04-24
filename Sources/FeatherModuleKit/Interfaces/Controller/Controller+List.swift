@@ -46,7 +46,16 @@ where
         _ input: List.Query
     ) async throws -> List
 
+    func listDefault(
+        _ input: List.Query
+    ) async throws -> List
+
     func list(
+        _ input: List.Query,
+        filters: [DatabaseGroupFilter<Model.ColumnNames>]
+    ) async throws -> List
+
+    func listDefault(
         _ input: List.Query,
         filters: [DatabaseGroupFilter<Model.ColumnNames>]
     ) async throws -> List
@@ -62,10 +71,23 @@ extension ControllerList {
     public func list(
         _ input: List.Query
     ) async throws -> List {
-        try await list(input, filters: [])
+        try await listDefault(input)
+    }
+
+    public func listDefault(
+        _ input: List.Query
+    ) async throws -> List {
+        try await listDefault(input, filters: [])
     }
 
     public func list(
+        _ input: List.Query,
+        filters: [DatabaseGroupFilter<Model.ColumnNames>]
+    ) async throws -> List {
+        try await listDefault(input, filters: filters)
+    }
+
+    public func listDefault(
         _ input: List.Query,
         filters: [DatabaseGroupFilter<Model.ColumnNames>]
     ) async throws -> List {
