@@ -52,9 +52,13 @@ where
     ) async throws -> List
 
     static var listFilterColumns: [Model.ColumnNames] { get }
+
+    static func typeDefinition(list: List.Type)
 }
 
 extension ControllerList {
+    public static func typeDefinition(list: List.Type) {}
+
     public func list(
         _ input: List.Query
     ) async throws -> List {
