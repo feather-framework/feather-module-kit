@@ -13,6 +13,12 @@ public protocol ControllerInterface {
     typealias Model = Query.Row
 
     var components: ComponentRegistry { get }
+
+    static func typeDefinition(query: Query.Type)
+}
+
+extension ControllerInterface {
+    public static func typeDefinition(query: Query.Type) {}
 }
 
 public protocol KeyedControllerInterface: ControllerInterface

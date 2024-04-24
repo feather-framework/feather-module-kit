@@ -34,9 +34,15 @@ where
         _ id: ID<KeyType>,
         _ input: Patch
     ) async throws -> Detail
+
+    static func typeDefinition(patch: Patch.Type)
+    static func typeDefinition(detail: Detail.Type)
 }
 
 extension ControllerPatch {
+    public static func typeDefinition(patch: Patch.Type) {}
+    public static func typeDefinition(detail: Detail.Type) {}
+
     public func patch(
         _ id: ID<KeyType>,
         _ input: Patch

@@ -23,9 +23,13 @@ where
     func reference(
         ids: [ID<KeyType>]
     ) async throws -> [Reference]
+
+    static func typeDefinition(reference: Reference.Type)
 }
 
 extension ControllerReference {
+    public static func typeDefinition(reference: Reference.Type) {}
+
     public func reference(
         ids: [ID<KeyType>]
     ) async throws -> [Reference] {

@@ -30,9 +30,15 @@ where
     func create(
         _ input: Create
     ) async throws -> Detail
+
+    static func typeDefinition(create: Create.Type)
+    static func typeDefinition(detail: Detail.Type)
 }
 
 extension ControllerCreate {
+    public static func typeDefinition(create: Create.Type) {}
+    public static func typeDefinition(detail: Detail.Type) {}
+
     public func create(
         _ input: Create
     ) async throws -> Detail {
