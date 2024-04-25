@@ -10,7 +10,12 @@ import FeatherDatabase
 
 public protocol PatchInterface {
     associatedtype Key: Identifiable
+    func verify(_ originalKey: ID<Key>, on db: Database) async throws
     func validate(_ originalKey: ID<Key>, on db: Database) async throws
+}
+
+extension PatchInterface {
+    public func verify(_ originalKey: ID<Key>, on db: Database) async throws {}
 }
 
 public protocol ModelInterfacePatch: DatabaseModel {
@@ -54,6 +59,7 @@ extension ControllerPatch {
             on: db
         )
 
+        try await input.verify(id, on: db)
         try await input.validate(id, on: db)
 
         let newModel = try Model.init(patch: input, oldModel: oldModel)

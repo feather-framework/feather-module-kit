@@ -10,7 +10,12 @@ import FeatherDatabase
 
 public protocol UpdateInterface {
     associatedtype Key: Identifiable
+    func verify(_ originalKey: ID<Key>, on db: Database) async throws
     func validate(_ originalKey: ID<Key>, on db: Database) async throws
+}
+
+extension UpdateInterface {
+    public func verify(_ originalKey: ID<Key>, on db: Database) async throws {}
 }
 
 public protocol ModelInterfaceUpdate: DatabaseModel {
@@ -51,6 +56,7 @@ extension ControllerUpdate {
 
         let oldModel = try await Query.require(id.toKey(), on: db)
 
+        try await input.verify(id, on: db)
         try await input.validate(id, on: db)
 
         let newModel = try Model.init(update: input, oldModel: oldModel)
