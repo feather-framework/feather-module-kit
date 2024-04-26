@@ -18,13 +18,13 @@ where
     func get(
         _ id: ID<ModelKeyTypeT>
     ) async throws -> Detail?
-    
+
     static func typeDefinition(getdetail: Detail.Type)
 }
 
 extension ControllerGet {
     public static func typeDefinition(getdetail: Detail.Type) {}
-    
+
     public func get(
         _ id: ID<ModelKeyTypeT>
     ) async throws -> Detail? {
@@ -32,7 +32,7 @@ extension ControllerGet {
         guard let model = try await Query.get(id.toKey(), on: db) else {
             return nil
         }
-        
+
         return try .init(model: model)
     }
 
@@ -47,7 +47,7 @@ extension ControllerGet {
             keyName: Model.keyName.rawValue
         )
     }
-    
+
     public func exists(
         _ id: ID<ModelKeyTypeT>
     ) async throws -> Bool {
