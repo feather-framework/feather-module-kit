@@ -24,11 +24,11 @@ where
         _ id: ID<KeyType>
     ) async throws -> Detail
 
-    static func typeDefinition(detail: Detail.Type)
+    static func typeDefinition(getdetail: Detail.Type)
 }
 
 extension ControllerGet {
-    public static func typeDefinition(detail: Detail.Type) {}
+    public static func typeDefinition(getdetail: Detail.Type) {}
 
     public func get(
         _ id: ID<KeyType>

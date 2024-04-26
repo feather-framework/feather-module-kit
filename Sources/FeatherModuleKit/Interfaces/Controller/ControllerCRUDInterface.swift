@@ -45,7 +45,13 @@ extension ControllerCRUDInterface {
     public static func typeDefinition(patch: ControllerModel.Patch.Type) {}
     public static func typeDefinition(update: ControllerModel.Update.Type) {}
     public static func typeDefinition(create: ControllerModel.Create.Type) {}
-    public static func typeDefinition(detail: ControllerModel.Detail.Type) {}
+    public static func typeDefinition(getdetail: ControllerModel.Detail.Type) {}
+    public static func typeDefinition(createdetail: ControllerModel.Detail.Type)
+    {}
+    public static func typeDefinition(patchdetail: ControllerModel.Detail.Type)
+    {}
+    public static func typeDefinition(updatedetail: ControllerModel.Detail.Type)
+    {}
     public static func typeDefinition(reference: ControllerModel.Reference.Type)
     {}
     public static func typeDefinition(list: ControllerModel.List.Type) {}

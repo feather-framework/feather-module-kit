@@ -36,12 +36,12 @@ where
     ) async throws -> Detail
 
     static func typeDefinition(patch: Patch.Type)
-    static func typeDefinition(detail: Detail.Type)
+    static func typeDefinition(patchdetail: Detail.Type)
 }
 
 extension ControllerPatch {
     public static func typeDefinition(patch: Patch.Type) {}
-    public static func typeDefinition(detail: Detail.Type) {}
+    public static func typeDefinition(patchdetail: Detail.Type) {}
 
     public func patch(
         _ id: ID<KeyType>,
