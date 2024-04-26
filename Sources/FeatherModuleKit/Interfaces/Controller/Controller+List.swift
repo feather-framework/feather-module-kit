@@ -12,7 +12,7 @@ public protocol ControllerList: ControllerInterface
 where
     Query: DatabaseQueryList,
     List.Model == Model,
-    Model.ColumnNames: ColumnNamesAdapter,
+    Model.ColumnNames: ListQuerySortKeyAdapter,
     Model.ColumnNames.ListQuerySortKeys == List.Query.Sort.Key
 {
     associatedtype List: ListAdapter
