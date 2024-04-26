@@ -16,7 +16,7 @@ where
     Detail.Model == Model
 {
     associatedtype Create: CreateInterface
-    associatedtype Detail: DetailInterface
+    associatedtype Detail: DetailAdapter
 
     func create(
         _ input: Create

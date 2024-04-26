@@ -18,7 +18,7 @@ where
     Detail.Model == Model
 {
     associatedtype Update: UpdateInterface
-    associatedtype Detail: DetailInterface
+    associatedtype Detail: DetailAdapter
 
     func update(
         _ id: ID<ModelKeyTypeT>,

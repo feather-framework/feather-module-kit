@@ -12,7 +12,7 @@ public protocol ControllerModelInterface {
     associatedtype Patch: PatchInterface
     associatedtype Update: UpdateInterface
     associatedtype Create: CreateInterface
-    associatedtype Detail: DetailInterface
-    associatedtype Reference: ReferenceInterface
-    associatedtype List: ListInterface
+    associatedtype Detail: DetailAdapter
+    associatedtype Reference: ReferenceAdapter
+    associatedtype List: ListAdapter
 }

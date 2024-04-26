@@ -13,7 +13,7 @@ where
     Query: DatabaseQueryGet,
     Detail.Model == Model
 {
-    associatedtype Detail: DetailInterface
+    associatedtype Detail: DetailAdapter
 
     func get(
         _ id: ID<ModelKeyTypeT>

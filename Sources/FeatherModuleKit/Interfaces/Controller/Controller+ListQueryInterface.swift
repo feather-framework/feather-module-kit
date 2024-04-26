@@ -7,7 +7,7 @@
 
 import FeatherDatabase
 
-public protocol ListQueryInterface {
+public protocol ListQueryInterface: Object {
     associatedtype Sort: ListQuerySortInterface
     var search: String? { get }
     var page: Page { get }

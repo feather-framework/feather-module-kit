@@ -13,7 +13,7 @@ where
     Query: DatabaseQueryListAll,
     Reference.Model == Model
 {
-    associatedtype Reference: ReferenceInterface
+    associatedtype Reference: ReferenceAdapter
 
     func reference(
         ids: [ID<ModelKeyTypeT>]
