@@ -14,12 +14,12 @@ where Model == Item.Model {
     associatedtype Item: ListItemAdapter
 
     init(items: [Model], count: UInt) throws
-    init(items: [Item], count: UInt)
+    init(items: [Item], count: UInt) throws
 }
 
 extension ListAdapter {
     public init(items: [Model], count: UInt) throws {
-        self.init(
+        try self.init(
             items: try items.map {
                 try .init(model: $0)
             },
