@@ -47,7 +47,7 @@ final class FeatherModuleKitTests: XCTestCase {
 
     func testListConstruction() async throws {
 
-        struct MyList: List, Pagination, Countable {
+        struct MyList: ListInterface, Pagination, Countable {
             var items: [String]
             var count: UInt
             var page: Page
