@@ -37,12 +37,12 @@ where
     ) async throws -> Detail
 
     static func typeDefinition(create: Create.Type)
-    static func typeDefinition(detail: Detail.Type)
+    static func typeDefinition(createdetail: Detail.Type)
 }
 
 extension ControllerCreate {
     public static func typeDefinition(create: Create.Type) {}
-    public static func typeDefinition(detail: Detail.Type) {}
+    public static func typeDefinition(createdetail: Detail.Type) {}
 
     public func create(
         _ input: Create
