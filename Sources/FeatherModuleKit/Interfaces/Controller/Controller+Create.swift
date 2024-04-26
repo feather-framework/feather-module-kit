@@ -8,19 +8,10 @@
 import FeatherComponent
 import FeatherDatabase
 
-public protocol CreateInterface {
-    func validate(on db: Database) async throws
-}
-
-public protocol ModelInterfaceCreate: DatabaseModel {
-    associatedtype Create: CreateInterface
-    init(create: Create) throws
-}
-
 public protocol ControllerCreate: ControllerInterface
 where
     Query: DatabaseQueryInsert,
-    Model: ModelInterfaceCreate,
+    Model: CreateAdapter,
     Model.Create == Create,
     Detail.Model == Model
 {
@@ -44,6 +35,7 @@ extension ControllerCreate {
     ) async throws -> Detail {
         let db = try await components.database().connection()
 
+        try await input.verify(on: db)
         try await input.validate(on: db)
 
         let model = try Model.init(create: input)
