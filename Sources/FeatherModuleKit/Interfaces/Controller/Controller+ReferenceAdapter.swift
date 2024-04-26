@@ -7,7 +7,7 @@
 
 import FeatherDatabase
 
-public protocol DetailInterface {
+public protocol ReferenceAdapter {
     associatedtype Model: DatabaseModel
     init(model: Model) throws
 }

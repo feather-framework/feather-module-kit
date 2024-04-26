@@ -12,10 +12,10 @@ public protocol ControllerList: ControllerInterface
 where
     Query: DatabaseQueryList,
     List.Model == Model,
-    Model.ColumnNames: ColumnNamesInterface,
+    Model.ColumnNames: ColumnNamesAdapter,
     Model.ColumnNames.ListQuerySortKeys == List.Query.Sort.Key
 {
-    associatedtype List: ListInterface
+    associatedtype List: ListAdapter
 
     func list(
         _ input: List.Query

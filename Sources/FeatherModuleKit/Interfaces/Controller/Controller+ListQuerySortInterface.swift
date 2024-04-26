@@ -7,7 +7,7 @@
 
 import FeatherDatabase
 
-public protocol ListQuerySortInterface {
+public protocol ListQuerySortInterface: Object {
     associatedtype Key: SortKeyInterface
     var by: Key { get }
     var order: Order { get }

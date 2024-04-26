@@ -18,7 +18,7 @@ where
     Detail.Model == Model
 {
     associatedtype Patch: PatchInterface
-    associatedtype Detail: DetailInterface
+    associatedtype Detail: DetailAdapter
 
     func patch(
         _ id: ID<ModelKeyTypeT>,

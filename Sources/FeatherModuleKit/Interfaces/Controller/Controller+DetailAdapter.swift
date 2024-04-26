@@ -7,9 +7,7 @@
 
 import FeatherDatabase
 
-public protocol ListInterface {
+public protocol DetailAdapter {
     associatedtype Model: DatabaseModel
-    associatedtype Query: ListQueryInterface
-
-    init(items: [Model], count: UInt) throws
+    init(model: Model) throws
 }
