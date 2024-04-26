@@ -8,24 +8,10 @@
 import FeatherComponent
 import FeatherDatabase
 
-public protocol CreateInterface {
-    func verify(on db: Database) async throws
-    func validate(on db: Database) async throws
-}
-
-extension CreateInterface {
-    public func verify(on db: Database) async throws {}
-}
-
-public protocol ModelInterfaceCreate: DatabaseModel {
-    associatedtype Create: CreateInterface
-    init(create: Create) throws
-}
-
 public protocol ControllerCreate: ControllerInterface
 where
     Query: DatabaseQueryInsert,
-    Model: ModelInterfaceCreate,
+    Model: CreateAdapter,
     Model.Create == Create,
     Detail.Model == Model
 {

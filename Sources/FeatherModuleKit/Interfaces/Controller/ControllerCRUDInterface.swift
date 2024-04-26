@@ -6,17 +6,6 @@
 //
 
 import FeatherComponent
-import FeatherDatabase
-
-public protocol ControllerModelInterface {
-    associatedtype Query: DatabaseQueryInterface
-    associatedtype Patch: PatchInterface
-    associatedtype Update: UpdateInterface
-    associatedtype Create: CreateInterface
-    associatedtype Detail: DetailInterface
-    associatedtype Reference: ReferenceInterface
-    associatedtype List: ListInterface
-}
 
 public protocol ControllerCRUDInterface:
     ControllerCreate,

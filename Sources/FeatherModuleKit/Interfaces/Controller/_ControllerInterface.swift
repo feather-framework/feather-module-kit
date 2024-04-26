@@ -26,7 +26,7 @@ where
     Model: KeyedDatabaseModel,
     Model.KeyType.T: Identifiable,
     Model.KeyType.T.RawIdentifier == String,
-    Key<KeyType> == Model.KeyType
+    Key<ModelKeyTypeT> == Model.KeyType
 {
-    associatedtype KeyType = Model.KeyType.T
+    associatedtype ModelKeyTypeT = Model.KeyType.T
 }

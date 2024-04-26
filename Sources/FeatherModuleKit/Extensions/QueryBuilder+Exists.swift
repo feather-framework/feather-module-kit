@@ -12,7 +12,7 @@ extension DatabaseQueryGet where Row: KeyedDatabaseModel {
     public static func exists(
         _ value: Row.KeyType,
         on db: Database
-    ) async throws {
-        try await require(value, on: db)
+    ) async throws -> Bool {
+        try await get(value, on: db) != nil
     }
 }

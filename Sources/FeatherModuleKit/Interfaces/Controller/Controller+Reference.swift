@@ -8,11 +8,6 @@
 import FeatherComponent
 import FeatherDatabase
 
-public protocol ReferenceInterface {
-    associatedtype Model: DatabaseModel
-    init(model: Model) throws
-}
-
 public protocol ControllerReference: KeyedControllerInterface
 where
     Query: DatabaseQueryListAll,
@@ -21,7 +16,7 @@ where
     associatedtype Reference: ReferenceInterface
 
     func reference(
-        ids: [ID<KeyType>]
+        ids: [ID<ModelKeyTypeT>]
     ) async throws -> [Reference]
 
     static func typeDefinition(reference: Reference.Type)
@@ -31,7 +26,7 @@ extension ControllerReference {
     public static func typeDefinition(reference: Reference.Type) {}
 
     public func reference(
-        ids: [ID<KeyType>]
+        ids: [ID<ModelKeyTypeT>]
     ) async throws -> [Reference] {
         let db = try await components.database().connection()
 

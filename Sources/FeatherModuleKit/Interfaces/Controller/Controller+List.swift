@@ -8,36 +8,11 @@
 import FeatherComponent
 import FeatherDatabase
 
-public protocol ListQuerySortInterface {
-    associatedtype Key: SortKeyInterface
-    var by: Key { get }
-    var order: Order { get }
-}
-
-public protocol ListQueryInterface {
-    associatedtype Sort: ListQuerySortInterface
-    var search: String? { get }
-    var page: Page { get }
-    var sort: Sort { get }
-}
-
-public protocol ListInterface {
-    associatedtype Model: DatabaseModel
-    associatedtype Query: ListQueryInterface
-
-    init(items: [Model], count: UInt) throws
-}
-
-public protocol ModelColumnNamesInterface {
-    associatedtype ListQuerySortKeys: SortKeyInterface
-    init(listQuerySortKeys: ListQuerySortKeys) throws
-}
-
 public protocol ControllerList: ControllerInterface
 where
     Query: DatabaseQueryList,
     List.Model == Model,
-    Model.ColumnNames: ModelColumnNamesInterface,
+    Model.ColumnNames: ColumnNamesInterface,
     Model.ColumnNames.ListQuerySortKeys == List.Query.Sort.Key
 {
     associatedtype List: ListInterface

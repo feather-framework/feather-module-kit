@@ -11,13 +11,13 @@ import FeatherDatabase
 public protocol ControllerDelete: KeyedControllerInterface
 where Query: DatabaseQueryDelete {
     func bulkDelete(
-        ids: [ID<KeyType>]
+        ids: [ID<ModelKeyTypeT>]
     ) async throws
 }
 
 extension ControllerDelete {
     public func bulkDelete(
-        ids: [ID<KeyType>]
+        ids: [ID<ModelKeyTypeT>]
     ) async throws {
         let db = try await components.database().connection()
         try await Query.delete(

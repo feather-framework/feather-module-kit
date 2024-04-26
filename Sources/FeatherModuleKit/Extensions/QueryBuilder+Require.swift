@@ -9,6 +9,7 @@ import FeatherDatabase
 
 extension DatabaseQueryGet where Row: KeyedDatabaseModel {
 
+    @discardableResult
     public static func require(
         _ value: Row.KeyType,
         on db: Database
