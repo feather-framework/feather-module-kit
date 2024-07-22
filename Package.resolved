@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/feather-framework/feather-access-control",
       "state" : {
-        "revision" : "4bc81ea602cc3a0bb0d151f3b9d9df369f173232",
-        "version" : "0.2.0"
+        "branch" : "feature/disable",
+        "revision" : "a0194142003f28e0b58c0322045fde619cfeba3e"
       }
     },
     {

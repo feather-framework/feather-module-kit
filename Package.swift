@@ -20,7 +20,8 @@ let package = Package(
         .package(url: "https://github.com/feather-framework/feather-mail", .upToNextMinor(from: "0.5.0")),
         .package(url: "https://github.com/feather-framework/feather-push", .upToNextMinor(from: "0.4.0")),
         .package(url: "https://github.com/feather-framework/feather-validation", .upToNextMinor(from: "0.1.0")),
-        .package(url: "https://github.com/feather-framework/feather-access-control", .upToNextMinor(from: "0.2.0")),
+        //.package(url: "https://github.com/feather-framework/feather-access-control", .upToNextMinor(from: "0.2.0")),
+        .package(url: "https://github.com/feather-framework/feather-access-control", branch: "feature/disable"),
         .package(url: "https://github.com/feather-framework/feather-scripts", .upToNextMinor(from: "0.1.0")),
     ],
     targets: [
