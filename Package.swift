@@ -16,7 +16,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/feather-framework/feather-database", .upToNextMinor(from: "0.4.4")),
-        .package(url: "https://github.com/feather-framework/feather-storage", .upToNextMinor(from: "0.5.0")),
+        .package(url: "https://github.com/feather-framework/feather-storage", .upToNextMinor(from: "0.6.1")),
         .package(url: "https://github.com/feather-framework/feather-mail", .upToNextMinor(from: "0.5.0")),
         .package(url: "https://github.com/feather-framework/feather-push", .upToNextMinor(from: "0.4.0")),
         .package(url: "https://github.com/feather-framework/feather-validation", .upToNextMinor(from: "0.1.0")),
